@@ -1,3 +1,10 @@
+リポジトリ:<br/>
+https://github.com/Hachiyan-88/number-guessing-game
+
+コミット:<br/>
+793f90074f6d728bd6fffbb7ce864ebc80aeb537
+
+
 # GameLauncherとNumberBattleGameのクラスを分けた理由は？
 READMEを読む限り、<br/>
 GameLauncher 👉 ゲームの流れ管理<br/>
