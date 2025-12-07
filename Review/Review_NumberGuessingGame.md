@@ -1,7 +1,7 @@
 # GameLauncherとNumberBattleGameのクラスを分けた理由は？
 READMEを読む限り、<br/>
-GameLauncher 👉　ゲームの流れ管理<br/>
-NumberBattleGame 👉　ゲームの実処理<br/>
+GameLauncher 👉 ゲームの流れ管理<br/>
+NumberBattleGame 👉 ゲームの実処理<br/>
 と理解しています。
 
 あくまで私の感じ方なのでいろんな考え方があると思いますが、ゲーム開始までの流れを担うだけの今のクラスであれば`main`メソッドにそのまま書いちゃえばいいのでは？と感じました。
@@ -40,10 +40,9 @@ public class GameLauncher {
 		
         // メインループ
 		NumberBattleGame game = new NumberBattleGame(config, player, scanner);
-
         ReplayManager replay = new ReplayManager(scanner);
 
-        // 一連の流れになっていればNumberBattleGame.starGameで実施していた名前の未設定チェックも不要になる？
+        // 一連の流れになっていればNumberBattleGame.starGameで実施していた名前の未設定チェックも不要になりそう
 
         do {
             game.playOneGame();
@@ -76,10 +75,10 @@ public void startGame() {
     
     // ここで考慮している？---------------------------
     if(config.getPlayerName().isEmpty()) {
-            player.inputName();
-            config.setPlayerName(player.getName());
+        player.inputName();
+        config.setPlayerName(player.getName());
     } else {
-            player.setName(config.getPlayerName());
+        player.setName(config.getPlayerName());
     }
     // --------------------------------------------
 
@@ -139,13 +138,14 @@ public class CpuRangeUpdater {
     }
 
 }
-
-// 呼び出し例
+```
+👇 呼び出し例
+```java
 if (cpu instanceof CpuSmart smartCpu) {
-    new CpuRangeUpdater(smartCpu,cpuGuess, secretNumber).execute();
+    var updater = new CpuRangeUpdater(smartCpu,cpuGuess, secretNumber);
+    updater.execute();
 }
 ```
-
 安易に継承を使うことによる危険性についてはいろんな文献があるので調べてみるといいと思います。
 
 軽く伝えておくと、<br/>
